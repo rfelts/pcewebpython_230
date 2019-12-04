@@ -1,0 +1,18 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Donations{% endblock subtitle %}
+
+{% block content %}
+<form method="POST">
+    {% if message %}<p>{{ message }}</p>{% endif %}
+    <label for="name-input">List Donations for Donor Named: </label><input id="name-input" type="text" name="donor_name">
+    </br>
+    <input type="submit" value="List Donations">
+</form>
+</br>
+<ul>
+    {% for donation in donations %}
+        <li><b>{{ donation.donor.name }}</b>: {{ donation.value }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
